@@ -4,7 +4,6 @@ function showToast(message, type = "dark") {
   
     toastMsg.innerText = message;
   
-    // تغيير اللون حسب النوع
     toastEl.className = `toast align-items-center text-bg-${type} border-0`;
   
     const toast = new bootstrap.Toast(toastEl, {
@@ -14,19 +13,19 @@ function showToast(message, type = "dark") {
     toast.show();
   }
 // ================= DATA FROM data.js =================
-// menuItems لازم تكون في data.js
+// menuItems  data.js
 
-// ================= GLOBAL =================
+//  GLOBAL 
 let visibleItems = 6;
 let tempQty = {};
 
-// ================= INIT =================
+//  INIT 
 document.addEventListener("DOMContentLoaded", () => {
   renderMenu();
   updateCartCount();
 });
 
-// ================= RENDER MENU =================
+//  RENDER MENU 
 function renderMenu() {
   const container = document.getElementById("menu-container");
   if (!container) return;
@@ -70,7 +69,7 @@ function renderMenu() {
   });
 }
 
-// ================= CHANGE QTY =================
+//  CHANGE QTY 
 function changeQty(name, val) {
   if (!tempQty[name]) tempQty[name] = 1;
 
@@ -82,7 +81,7 @@ function changeQty(name, val) {
   if (el) el.innerText = tempQty[name];
 }
 
-// ================= ADD TO CART =================
+//  ADD TO CART 
 function addToCart(name, price, img) {
   let qty = tempQty[name] || 1;
 
@@ -111,7 +110,7 @@ function addToCart(name, price, img) {
   showToast("Item added to cart 🛒", "success");
 }
 
-// ================= CART COUNT =================
+//  CART COUNT 
 function updateCartCount() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -121,7 +120,7 @@ function updateCartCount() {
   if (el) el.innerText = count;
 }
 
-// ================= SHOW MORE =================
+//  SHOW MORE 
 function showMore() {
   document.querySelectorAll(".menu-item.d-none")
     .forEach(el => el.classList.remove("d-none"));
@@ -130,7 +129,7 @@ function showMore() {
   if (btn) btn.style.display = "none";
 }
 
-// ================= DISPLAY CART =================
+//  DISPLAY CART 
 function displayCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   let container = document.getElementById("cart-table-container");
@@ -196,7 +195,7 @@ function displayCart() {
   container.innerHTML = html;
 }
 
-// ================= DELETE ITEM =================
+//  DELETE ITEM 
 function deleteItem(index) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -208,7 +207,7 @@ function deleteItem(index) {
   updateCartCount();
 }
 
-// ================= CONFIRM ORDER (WHATSAPP) =================
+//  CONFIRM ORDER (WHATSAPP) 
 function confirmOrder() {
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -250,12 +249,12 @@ function confirmOrder() {
 
   message += `%0A💰 *Grand Total: ${total} EGP*`;
 
-  // ================= RESET AFTER SEND =================
+  //  RESET AFTER SEND 
   localStorage.removeItem("cart");
   updateCartCount();
   displayCart();
 
-  window.open(`https://wa.me/201234567890?text=${message}`, "_blank");
+  window.open(`https://wa.me/201551195207?text=${message}`, "_blank");
 }
 
 function sendContactWhatsApp() {
@@ -282,7 +281,7 @@ function sendContactWhatsApp() {
   
     window.open(`https://wa.me/201234567890?text=${message}`, "_blank");
   
-    // ================= CLEAR FORM =================
+    //  CLEAR FORM 
     document.getElementById("c_name").value = "";
     document.getElementById("c_phone").value = "";
     document.getElementById("c_email").value = "";
@@ -297,7 +296,7 @@ function sendContactWhatsApp() {
     navLinks.forEach(link => {
       link.addEventListener("click", () => {
         
-        // لو الموبايل menu مفتوح
+       
         if (navbarCollapse.classList.contains("show")) {
           new bootstrap.Collapse(navbarCollapse).hide();
         }
