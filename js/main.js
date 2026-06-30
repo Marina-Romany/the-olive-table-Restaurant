@@ -300,7 +300,7 @@ function sendContactWhatsApp() {
   
     message += `%0A💬 Message:%0A${msg}`;
   
-    window.open(`https://wa.me/201234567890?text=${message}`, "_blank");
+    window.open(`https://wa.me/2012345678?text=${message}`, "_blank");
   
     //  CLEAR FORM 
     document.getElementById("c_name").value = "";
