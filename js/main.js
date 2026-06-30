@@ -210,52 +210,73 @@ function deleteItem(index) {
 //  CONFIRM ORDER (WHATSAPP) 
 function confirmOrder() {
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  let notes = document.getElementById("notes").value;
-
-  if (!name || !phone || !address) {
-    showToast("Please fill all required fields ⚠️", "warning");
-        return;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let notes = document.getElementById("notes").value;
+  
+    if (!name || !phone || !address) {
+      showToast("Please fill all required fields ⚠️", "warning");
+      return;
+    }
+  
+    if (cart.length === 0) {
+      showToast("Your cart is empty 🛒", "warning");
+      return;
+    }
+  
+    let total = 0;
+  
+    let message = `🛒 *NEW ORDER*%0A%0A`;
+  
+    message += `👤 Name: ${name}%0A`;
+    message += `📞 Phone: ${phone}%0A`;
+    message += `📍 Address: ${address}%0A`;
+  
+    if (notes.trim()) {
+      message += `📝 Notes: ${notes}%0A`;
+    }
+  
+    message += `%0A━━━━━━━━━━━━━━%0A`;
+    message += `🍽 *ORDER ITEMS*%0A`;
+  
+    cart.forEach((item, index) => {
+  
+      let itemTotal = item.price * item.quantity;
+      total += itemTotal;
+  
+      message += `%0A${index + 1}. ${item.name}`;
+      message += `%0A   Qty: ${item.quantity}`;
+      message += `%0A   Price: ${item.price} EGP`;
+      message += `%0A   Item Total: ${itemTotal} EGP`;
+      message += `%0A`;
+    });
+  
+    message += `%0A━━━━━━━━━━━━━━%0A`;
+    message += `💰 *GRAND TOTAL: ${total} EGP*`;
+  
+    // افتح الواتساب أولاً
+    window.open(
+      `https://wa.me/201551195207?text=${message}`,
+      "_blank"
+    );
+  
+    // امسح السلة
+    localStorage.removeItem("cart");
+  
+    // امسح الفورم
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("notes").value = "";
+  
+    updateCartCount();
+    displayCart();
+  
+    showToast("Order sent successfully ✅", "success");
   }
-
-  let message = `🛒 *New Order*%0A%0A`;
-
-  message += `👤 Name: ${name}%0A`;
-  message += `📞 Phone: ${phone}%0A`;
-  message += `📍 Address: ${address}%0A`;
-
-  if (notes) {
-    message += `📝 Notes: ${notes}%0A`;
-  }
-
-  message += `%0A🍽 Items:%0A`;
-
-  let total = 0;
-
-  cart.forEach(item => {
-
-    let itemTotal = item.price * item.quantity;
-    total += itemTotal;
-
-    message += `%0A📸 ${item.name}`;
-    message += `%0AQty: ${item.quantity}`;
-    message += `%0APrice: ${item.price} EGP`;
-    message += `%0ATotal: ${itemTotal} EGP%0A`;
-  });
-
-  message += `%0A💰 *Grand Total: ${total} EGP*`;
-
-  //  RESET AFTER SEND 
-  localStorage.removeItem("cart");
-  updateCartCount();
-  displayCart();
-
-  window.open(`https://wa.me/201551195207?text=${message}`, "_blank");
-}
 
 function sendContactWhatsApp() {
 
