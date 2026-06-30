@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Olive Table</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR (زي ما هو) ================= -->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-custom">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold" href="#hero">The Olive Table</a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">
+            <i class="bi bi-cart-fill"></i>
+            Cart (<span id="cart-count">0</span>)
+          </a>
+        </li>
+      </ul>
+
+      <a href="#menu" class="btn btn-warning">Order Now</a>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO (زي ما هو عندك) ================= -->
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container text-center text-white">
+
+    <h6 class="text-warning">Mediterranean Restaurant</h6>
+
+    <h1 class="display-3 fw-bold">The Olive Table</h1>
+
+    <p class="lead">
+      Fresh Mediterranean cuisine served with passion and elegance.
+    </p>
+
+    <a href="#menu" class="btn btn-warning btn-lg me-2">Explore Menu</a>
+    <a href="#about" class="btn btn-outline-light btn-lg">About Us</a>
+
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu" class="py-5">
+  <div class="container text-center">
+
+    <h2 class="fw-bold mb-5">Our Menu</h2>
+
+    <div class="row g-4" id="menu-container"></div>
+
+    <button id="showMoreBtn" class="btn btn-outline-dark mt-4" onclick="showMore()">
+      Show More
+    </button>
+
+  </div>
+</section>
+
+<!-- ================= ABOUT (زي ما هو + صورة شمال) ================= -->
+<section id="about" class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-md-6 mb-3 mb-md-0">
+        <img src="images/about.jpg" class="img-fluid rounded shadow">
+      </div>
+
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3">About Us</h2>
+
+        <p class="text-muted">
+          We bring authentic Mediterranean flavors with fresh ingredients.
+        </p>
+
+        <p class="text-muted">
+          Every dish is made with passion and care for the best experience.
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- contact -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+  
+      <h2 class="fw-bold text-center mb-5">Contact Us</h2>
+  
+      <div class="row g-4">
+  
+        <!-- ================= INFO ================= -->
+        <div class="col-md-5">
+  
+          <div class="p-4 bg-white shadow-sm rounded mb-3">
+            <h5 class="fw-bold">Restaurant Info</h5>
+  
+            <p><i class="bi bi-geo-alt-fill text-warning"></i> 123 Mediterranean St, Cairo</p>
+            <p><i class="bi bi-telephone-fill text-warning"></i> +20 123 456 7890</p>
+            <p><i class="bi bi-clock-fill text-warning"></i> Daily 10:00 AM - 11:00 PM</p>
+            <p><i class="bi bi-envelope-fill text-warning"></i> info@olive.com</p>
+          </div>
+  
+          <!-- SOCIAL -->
+          <div class="p-4 bg-white shadow-sm rounded text-center">
+            <h6 class="fw-bold mb-3">Follow Us</h6>
+  <!-- Instagram -->
+<a href="#" class="me-3" style="color:#E4405F;">
+  <i class="bi bi-instagram fs-4"></i>
+</a>
+
+<!-- Facebook -->
+<a href="#" class="me-3" style="color:#1877F2;">
+  <i class="bi bi-facebook fs-4"></i>
+</a>
+
+<!-- Twitter / X -->
+<a href="#" class="me-3" style="color:#1DA1F2;">
+  <i class="bi bi-twitter fs-4"></i>
+</a>
+
+<!-- LinkedIn -->
+<a href="#" style="color:#0A66C2;">
+  <i class="bi bi-linkedin fs-4"></i>
+</a>
+          </div>
+  
+        </div>
+  
+        <!-- ================= FORM ================= -->
+        <div class="col-md-7">
+  
+          <div class="p-4 bg-white shadow-sm rounded">
+  
+            <h5 class="fw-bold mb-3">Send Message</h5>
+  
+            <input id="c_name" class="form-control mb-2" placeholder="Name *" required>
+            <input id="c_phone" class="form-control mb-2" placeholder="Phone *" required>
+            <input id="c_email" class="form-control mb-2" placeholder="Email (optional)">
+            
+            <textarea id="c_msg" class="form-control mb-3" placeholder="Your Message *" required></textarea>
+  
+            <button class="btn btn-warning w-100 fw-bold" onclick="sendContactWhatsApp()">
+              Send Message
+            </button>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+</section>
+<footer class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      
+      <div class="col-md-4 mb-4">
+        <h4 class="text-warning fw-bold">The Olive Table</h4>
+        <p class="text-secondary">Fresh Mediterranean cuisine served with passion and elegance.</p>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html#menu" class="text-white-50 text-decoration-none">Our Menu</a></li>
+          <li><a href="cart.html" class="text-white-50 text-decoration-none">My Cart</a></li>
+          <li><a href="index.html#contact" class="text-white-50 text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <h5>Follow Us</h5>
+        <div class="social-links mt-3">
+<!-- Instagram -->
+<a href="#" class="me-3" style="color:#E4405F;">
+  <i class="bi bi-instagram fs-4"></i>
+</a>
+
+<!-- Facebook -->
+<a href="#" class="me-3" style="color:#1877F2;">
+  <i class="bi bi-facebook fs-4"></i>
+</a>
+
+<!-- Twitter / X -->
+<a href="#" class="me-3" style="color:#1DA1F2;">
+  <i class="bi bi-twitter fs-4"></i>
+</a>
+
+<!-- LinkedIn -->
+<a href="#" style="color:#0A66C2;">
+  <i class="bi bi-linkedin fs-4"></i>
+</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+    <div class="text-center text-white-50">
+      <p class="mb-0">© 2026 The Olive Table. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= TOAST ================= -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+  <div id="appToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        Message
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
